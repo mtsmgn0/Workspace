@@ -1,1 +1,95 @@
-Pseudo-código
+Classe ponto:
+	variáveis
+		x;
+		y;
+		
+	funções_membro:
+	
+		criar_ponto(x1, y1){
+		    x = x1;
+			y = x2;
+		}
+		
+		verificar_ponto_reta(x1, y1, x2, y2, x, y){
+		    
+		    //verifica se os pontos x e y fazem parte da reta 1-2
+		    
+		    linha.criar_linha(x1, y1, x2, y2);
+		    m = linha.coeficiente_angular;
+		    equacao_reta = y1 + m * (x - x1);
+		    
+		    if(x2 == x1) {
+		        return x == x1;
+		    }
+		    
+		    else {
+		        return y == equacao_reta;
+		    }
+		    //se retornar True, o ponto faz parte da reta
+		}
+		
+		
+		
+		
+		
+
+Classe linha: 
+
+	variáveis:
+	
+	    ponto1;
+	    ponto2;
+	    coeficiente_angular;
+	    
+	funções membro:
+	
+	    criar_linha(x1, y1, x2, y2){
+	        ponto1 = ponto.criar_ponto(x1, y1);
+	        ponto2 = ponto.criar_ponto(x2, y2);
+	        
+	        //se x1 e x2 forem iguais a reta e vertical
+	        if(x1 != x2){
+	            coeficiente_angular = (y1 - y2) / (x1 - x2);
+	        }
+	        
+	        else{
+	            coeficienten_angular = "indefinido";
+	        }
+	        
+	    }
+		
+Classe triangulo: 
+
+	variáveis:
+	
+	    base;
+	    topo;
+	    
+	funções membro:
+	    
+	
+	    criar_triangulo(x1_base, y1_base, x2_base, y2_base, x, y){
+	        
+	        if(ponto.verificar_ponto_reta(x1_base, y1_base, x2_base, y2_base, x, y)){
+	            
+	            base = linha.criar_linha(x1_base, y1_base, x2_base, y2_base);
+	            topo = ponto.criar_ponto(x, y);
+	        }
+	        
+	        else{
+	            base = NULL;
+	            topo = NULL;
+	        }
+	        //se o ponto do topo fizer parte da reta da base, o triângulo não existe
+	        
+	        }
+
+
+
+Classe quadrilátero: 
+	variáveis:
+	funções membro:
+
+Classe circulo: 
+	variáveis:
+	funções membro:
