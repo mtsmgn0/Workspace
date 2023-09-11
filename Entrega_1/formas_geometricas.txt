@@ -10,20 +10,19 @@ Classe ponto:
 			y = x2;
 		}
 		
-		verificar_ponto_reta(x1, y1, x2, y2, x, y){
+		verificar_ponto_reta(ponto, linha){
 		    
 		    //verifica se os pontos x e y fazem parte da reta 1-2
 		    
-		    linha.criar_linha(x1, y1, x2, y2);
 		    m = linha.coeficiente_angular;
-		    equacao_reta = y1 + m * (x - x1);
+		    equacao_reta = linha.ponto1.y + m * (ponto.x - linha.ponto1,x);
 		    
 		    if(x2 == x1) {
-		        return x == x1;
+		        return ponto.x == linha.ponto1.x;
 		    }
 		    
 		    else {
-		        return y == equacao_reta;
+		        return ponto.y == equacao_reta;
 		    }
 		    //se retornar True, o ponto faz parte da reta
 		}
@@ -40,6 +39,8 @@ Classe linha:
 	    ponto1;
 	    ponto2;
 	    coeficiente_angular;
+	    cumprimento;
+	    
 	    
 	funções membro:
 	
@@ -55,7 +56,11 @@ Classe linha:
 	        else{
 	            coeficienten_angular = "indefinido";
 	        }
-	        
+	       
+	    }
+	    
+	    cumprimento_linha(linha){
+	        cumprimento = sqrt((linha.ponto1.y - linha.ponto2.y)** + (linha.ponto1.x - linha.ponto2.x)**2)
 	    }
 		
 Classe triangulo: 
@@ -87,9 +92,24 @@ Classe triangulo:
 
 
 Classe quadrilátero: 
+
 	variáveis:
+	    
+	   base;
+	   altura;
+	   
 	funções membro:
+	    
+	    criar_quadrilatero(linha, y){
+            altura = cumprimento_linha(criar_linha(linha.ponto1.x, linha.ponto1.y, linha.ponto1.x, y));
+	        base = linha;
+	    }
 
 Classe circulo: 
+
 	variáveis:
+	    
+	    centro;
+	    raio;
+	    circunferência
 	funções membro:
