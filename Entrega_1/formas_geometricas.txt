@@ -6,7 +6,10 @@ Classe ponto:
 	funções_membro:
 	
 		
-		verificar_ponto_reta(ponto, linha){
+		verificar_ponto_reta(p, linha){
+
+			if instance(p, ponto){ // alterar dps
+						
 		    
 		    //verifica se os pontos x e y fazem parte da reta 1-2
 		    
