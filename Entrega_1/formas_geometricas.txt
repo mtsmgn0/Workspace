@@ -1,14 +1,10 @@
 Classe ponto:
 	variáveis
-		x;
-		y;
+		-x;
+		-y;
 		
 	funções_membro:
 	
-		criar_ponto(x1, y1){
-		    x = x1;
-			y = x2;
-		}
 		
 		verificar_ponto_reta(ponto, linha){
 		    
@@ -32,43 +28,40 @@ Classe ponto:
 		
 		
 
-Classe linha: 
+Classe linha(): 
 
 	variáveis:
 	
-	    ponto1;
-	    ponto2;
-	    coeficiente_angular;
-	    cumprimento;
+	    -ponto1 : ponto(x, y);
+	    -ponto2 : ponto(x, y);
+	    -coeficiente_angular;
+	    -cumprimento;
 	    
 	    
 	funções membro:
 	
-	    criar_linha(x1, y1, x2, y2){
-	        ponto1 = ponto.criar_ponto(x1, y1);
-	        ponto2 = ponto.criar_ponto(x2, y2);
-	        
+	    coeficiente_angular(linha){
 	        //se x1 e x2 forem iguais a reta e vertical
-	        if(x1 != x2){
-	            coeficiente_angular = (y1 - y2) / (x1 - x2);
+	        if(ponto1.x != ponto2.x){
+	            coeficiente_angular = (ponto1.y - ponto2.y) / (ponto1.x - potno2.x);
 	        }
 	        
 	        else{
-	            coeficienten_angular = "indefinido";
+	            coeficiente_angular = "indefinido";
 	        }
 	       
 	    }
 	    
 	    cumprimento_linha(linha){
-	        cumprimento = sqrt((linha.ponto1.y - linha.ponto2.y)** + (linha.ponto1.x - linha.ponto2.x)**2)
+	        cumprimento = sqrt((ponto1.y - ponto2.y)**2 + (ponto1.x - ponto2.x)**2)
 	    }
 		
-Classe triangulo: 
+Classe triangulo(linha): 
 
 	variáveis:
 	
-	    base;
-	    topo;
+	    base : linha(ponto1, ponto2);
+	    topo : ponto(x,y);
 	    
 	funções membro:
 	    
@@ -91,7 +84,7 @@ Classe triangulo:
 
 
 
-Classe quadrilátero: 
+Classe quadrilátero(linha): 
 
 	variáveis:
 	    
@@ -105,10 +98,9 @@ Classe quadrilátero:
 	        base = linha;
 	    }
 
-Classe circulo: 
+Classe circulo(linha): 
 
 	variáveis:
-	    
 	    centro;
 	    raio;
 	    circunferência
