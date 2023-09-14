@@ -1,23 +1,21 @@
+
 Classe ponto:
-	variáveis
-		x;
-		y;
+	variaveis
+		-x;
+		-y;
 		
-	funções_membro:
+	funcoes_membro:
 	
-		criar_ponto(x1, y1){
-		    x = x1;
-			y = x2;
-		}
 		
 		verificar_ponto_reta(ponto, linha){
+						
 		    
 		    //verifica se os pontos x e y fazem parte da reta 1-2
 		    
 		    m = linha.coeficiente_angular;
-		    equacao_reta = linha.ponto1.y + m * (ponto.x - linha.ponto1,x);
+		    equacao_reta = linha.ponto1.y + m * (ponto.x - linha.ponto1.x);
 		    
-		    if(x2 == x1) {
+		    if(ponto1.x == ponto2.x) {
 		        return ponto.x == linha.ponto1.x;
 		    }
 		    
@@ -27,89 +25,187 @@ Classe ponto:
 		    //se retornar True, o ponto faz parte da reta
 		}
 		
-		
+		quadrante(ponto){
+      
+      if(ponto.x == 0 && ponto.y == 0){
+        return "Origem";
+      }
+        
+      else if(y > 0){
+        if(x > 0){
+          return "Primeiro quadrante";
+        }
+        else if(x < 0){
+          return "segunto quadrante";
+        }
+      }
+
+      else if(y < 0){
+        if(x < 0){
+          return "terceiro quadrante";
+        }
+        else if(x > 0){
+          return "quarto quadrante";
+        }
+        
+      }
+
+      else{
+        return "O ponto está em um dos eixos";
+      }
+      
+    }
 		
 		
 		
 
-Classe linha: 
+Classe linha(ponto): 
 
-	variáveis:
+	variaveis:
 	
-	    ponto1;
-	    ponto2;
-	    coeficiente_angular;
-	    cumprimento;
+	    -ponto1 : ponto(x, y);
+	    -ponto2 : ponto(x, y);
 	    
-	    
-	funções membro:
+	funcoes membro:
 	
-	    criar_linha(x1, y1, x2, y2){
-	        ponto1 = ponto.criar_ponto(x1, y1);
-	        ponto2 = ponto.criar_ponto(x2, y2);
-	        
+	    coeficiente_angular(linha){
+    
 	        //se x1 e x2 forem iguais a reta e vertical
-	        if(x1 != x2){
-	            coeficiente_angular = (y1 - y2) / (x1 - x2);
+	        if(ponto1.x != ponto2.x){
+	           return (ponto1.y - ponto2.y) / (ponto1.x - potno2.x);
 	        }
 	        
 	        else{
-	            coeficienten_angular = "indefinido";
+	            return "indefinido";
 	        }
 	       
 	    }
 	    
-	    cumprimento_linha(linha){
-	        cumprimento = sqrt((linha.ponto1.y - linha.ponto2.y)** + (linha.ponto1.x - linha.ponto2.x)**2)
+	    comprimento_linha(linha){
+	        return sqrt((ponto1.y - ponto2.y)**2 + (ponto1.x - ponto2.x)**2)
 	    }
-		
-Classe triangulo: 
 
-	variáveis:
+      encontrar_centro(linha){
+          //Calculando as coordenadas x e y do centro
+        centro_x = (linha.ponto1.x + linha.ponto2.x) / 2;
+        centro_y = (linha.ponto1.y + linha.ponto2.y) / 2;
+
+          //Criando um novo ponto para representar o centro
+        centro = Ponto(centro_x, centro_y);
+
+        return centro;  
+      }
+    
+		
+Classe triangulo(linha): 
+
+	variaveis:
 	
-	    base;
-	    topo;
+	    base : linha(ponto1, ponto2);
+	    topo : ponto(x, y);
 	    
-	funções membro:
+	funcoes membro:
 	    
-	
-	    criar_triangulo(x1_base, y1_base, x2_base, y2_base, x, y){
+	    validar_triangulo(linha, ponto){
 	        
-	        if(ponto.verificar_ponto_reta(x1_base, y1_base, x2_base, y2_base, x, y)){
-	            
-	            base = linha.criar_linha(x1_base, y1_base, x2_base, y2_base);
-	            topo = ponto.criar_ponto(x, y);
-	        }
-	        
-	        else{
-	            base = NULL;
-	            topo = NULL;
+	        if(ponto.verificar_ponto_reta(linha, ponto)){
+	            base = None;
+	            topo = None;
+              return False;
 	        }
 	        //se o ponto do topo fizer parte da reta da base, o triângulo não existe
 	        
 	        }
+  
+      calcular_area_triangulo(triangulo){
+
+          if(validar triangulo == False){
+                return "O triangulo não existe";
+          }
+          lados = lados_ordenados(triangulo);
+          a = lados[0], b = lados[1], c = lados[2];
+          p = a+b+c;
+
+          return sqrt(p*(p-a)*(p-b)*(p-c))
+
+        }
+  
+      calcular_altura(triangulo){
+          area = calcular_area_triangulo(triangulo);
+          altura = (2 * area) / triangulo.base
+          return altura
+      }
+
+      lados_ordenados(triangulo){
+        
+          lados = [linha.comprimento(triangulo.base)];
+          lado1 = linha(triangulo.topo, base.ponto1);
+          lado2 = linha(triangulo.topo, base.ponto2);
+          
+          lados.append(linha.comprimento(lado1));
+          lados.append(linha.comprimento(lado2));
+  
+          return sorted(lados);
+              
+      }
+
+      is_retangulo(triangulo){
+
+          lados_ordenados = lados_ordenados(triangulo);
+          return lados_ordenados[0]**2 + lados_ordenados[1]**2 == lados_ordenados[2]**2;
+        
+      }
+
+          
 
 
 
-Classe quadrilátero: 
+Classe quadrilatero(linha): 
 
-	variáveis:
+	variaveis:
 	    
-	   base;
+	   base : linha(x, y);
 	   altura;
 	   
-	funções membro:
-	    
-	    criar_quadrilatero(linha, y){
-            altura = cumprimento_linha(criar_linha(linha.ponto1.x, linha.ponto1.y, linha.ponto1.x, y));
-	        base = linha;
-	    }
+	funcoes membro:
 
-Classe circulo: 
+      area_quadrilatero(quadrilatero){
+        return linha.comprimento_linha(quadrilatero.base) * quadrilatero.altura
+      }
 
-	variáveis:
-	    
-	    centro;
+      is_quadrado(quadrilatero){
+        return linha.comprimento(quadrilatero.base) == altura
+      }
+
+      
+
+Classe circulo(linha): 
+
+	variaveis:
+	    centro : ponto(x, y);
 	    raio;
-	    circunferência
-	funções membro:
+  
+      //a distancia do centro ate qualquer ponto da circunferencia deve ser o raio
+  
+	funcoes membro:
+
+      calcular_circunferencia(circulo){
+          return 6,28*raio;
+          // 2 pi R = C
+      }
+
+      ponto_na_circunferencia(circulo, ponto){
+          l = linha(ponto, circulo.centro)
+          if(comprimento_linha(l) == circulo.raio){
+            return "O ponto faz parte da circunferencia";
+          }
+          else if(comprimento_linha(l) > circulo.raio) return "O ponto não esta fora da circunferencia";
+            
+          else return "O ponto esta dentro da circunferencia";
+      }
+
+      area_do_circulo(circulo){
+          return 6,28* (raio**2);
+          //area = dois pi raio ao quadrado
+      }
+  
