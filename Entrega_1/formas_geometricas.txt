@@ -162,19 +162,23 @@ Classe triangulo(linha):
 Classe quadrilatero(linha): 
 
 	variaveis:
-	    
-	   base : linha(x, y);
+
+      //y dos dois potos tem que ser o mesmo para que o codigo funcione 
+	   base : linha((x1, y), (x2, y));
 	   altura;
 	   
 	funcoes membro:
 
       area_quadrilatero(quadrilatero){
-        return linha.comprimento_linha(quadrilatero.base) * quadrilatero.altura
+        return linha.comprimento_linha(quadrilatero.base) * quadrilatero.altura;
       }
 
       is_quadrado(quadrilatero){
         return linha.comprimento(quadrilatero.base) == altura
       }
+
+      ponto_dentro_quadrilatero(ponto, quadrilatero){
+        if ponto.x > base.ponto1.x && ponto.x < base.ponto2.x && ponto.y < base.ponto1.y;
 
       
 
