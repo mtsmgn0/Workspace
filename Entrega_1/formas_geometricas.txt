@@ -26,36 +26,36 @@ Classe ponto:
 		
 		quadrante(ponto){
       
-      if(ponto.x == 0 && ponto.y == 0){
-        return "Origem";
-      }
-        
-      else if(y > 0){
-        if(x > 0){
-          return "Primeiro quadrante";
-        }
-        else if(x < 0){
-          return "segunto quadrante";
-        }
-      }
-
-      else if(y < 0){
-        if(x < 0){
-          return "terceiro quadrante";
-        }
-        else if(x > 0){
-          return "quarto quadrante";
-        }
-        
-      }
-
-      else{
-        return "O ponto está em um dos eixos";
-      }
-      
-    }
+		      if(ponto.x == 0 && ponto.y == 0){
+		        return "Origem";
+		      }
+		        
+		      else if(y > 0){
+		        if(x > 0){
+		          return "Primeiro quadrante";
+		        }
+		        else if(x < 0){
+		          return "segunto quadrante";
+		        }
+		      }
 		
+		      else if(y < 0){
+		        if(x < 0){
+		          return "terceiro quadrante";
+		        }
+		        else if(x > 0){
+		          return "quarto quadrante";
+		        }
+		        
+		      }
 		
+		      else{
+		        return "O ponto está em um dos eixos";
+		      }
+		      
+		    }
+			
+			
 		
 
 Classe linha(): 
@@ -212,3 +212,4 @@ Classe circulo(linha):
           //area = dois pi raio ao quadrado
       }
   
+//o ultimo commit foi porque houve um erro de formatação (ele enviou sem o tab na função pro algum motivo :/)
