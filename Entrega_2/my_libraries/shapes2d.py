@@ -22,8 +22,17 @@ class Ponto:
         else:
             return "Terceiro quadrante" if self.x < 0 else "Quarto quadrante"
 
+
+    def alterar_coordenadas(self, x, y):
+        self.x = x
+        self.y = y
+
+    def atributos(self):
+        return f"ponto ({self.x},{self.y})"
+
+    @property
     def get_type(self):
-        return "Ponto"
+        return "Ponto_"
 
 
 class Reta:
@@ -38,6 +47,12 @@ class Reta:
         self.n = Reta.contador if self.verificar(ponto1, ponto2) else None
 
         print("Inisira dois pontos validos" * (not self.verificar(ponto1, ponto2)))
+
+
+    def alterar_pontos(self, ponto1: Ponto, ponto2: Ponto):
+
+        self.ponto1 = ponto1
+        self.ponto2 = ponto2
 
     def coeficiente_angular(self):
         # Se x1 e x2 são iguais, a reta é vertical e o coeficiente angular é indefinido
@@ -77,8 +92,12 @@ class Reta:
     def verificar(self, ponto1, ponto2):
         return isinstance(ponto1, Ponto) and isinstance(ponto2, Ponto) and not (ponto1.x == ponto2.x and ponto1.y == ponto2.y)
 
+    def atributos(self):
+        return f"A reta que vai do {self.ponto1.atributos()} ao {self.ponto2.atributos()} com o comprimento de {self.comprimento()} unidades de medida"
+
+    @property
     def get_type(self):
-        return "Reta"
+        return "Reta_"
 
 
 class Triangulo:
@@ -131,8 +150,18 @@ class Triangulo:
         lados_ordenados = self.lados_ordenados()
         return lados_ordenados[0] ** 2 + lados_ordenados[1] ** 2 == lados_ordenados[2] ** 2
 
+    def perimetro(self):
+        soma = 0
+        for lado in self.lados_ordenados():
+            soma += lado
+        return soma
+
+    def atributos(self):
+        return f"a base é {self.base.atributos()}\no topo é o {self.topo.atributos()}\nos lados são {self.lados_ordenados()}"
+
+    @property
     def get_type(self):
-        return "Triangulo"
+        return "Triangulo_"
 
 
 class Quadrilatero:
@@ -146,6 +175,9 @@ class Quadrilatero:
         self.n = Quadrilatero.contador if self.base is not None else None
         print("Selecione uma reta para ser a base" * (self.base is None))
 
+    def alterar_altura(self, altura):
+        self.altura = altura
+
     def area_quadrilatero(self):
         return self.base.comprimento() * self.altura
 
@@ -156,8 +188,15 @@ class Quadrilatero:
         if isinstance(ponto, Ponto):
             return True if self.base.ponto1.x < ponto.x < self.base.ponto2.x and self.base.ponto1.y < ponto.y < self.base.ponto1.y + self.altura else False
 
+    def perimetro(self):
+        return (self.base.comprimento() * 2) + (self.altura * 2)
+
+    def atributos(self):
+        return f"a base é {self.base.atributos()}\na altura é de {self.altura} unidades"
+
+    @property
     def get_type(self):
-        return "Quadrilatero"
+        return "Quadrilatero_"
 
 
 class Circulo:
@@ -173,7 +212,8 @@ class Circulo:
         self.circunferencia = self.calcular_circunferencia()
         self.area = self.area_do_circulo()
 
-
+    def alterar_raio(self, raio):
+        self.raio = raio
 
     def calcular_circunferencia(self):
         return 2 * pi * self.raio
@@ -194,7 +234,11 @@ class Circulo:
     def area_do_circulo(self):
         return pi * (self.raio ** 2)
 
+    def atributos(self):
+        return f"A a origem é {self.centro.atributos()}\nA circunferencia é de {self.circunferencia} unidades de medida\nO raio é de {self.raio} unidades de medida\nA area é de {self.area} unidades de medida ao quadrado"
+
+    @property
     def get_type(self):
-        return "Circulo"
+        return "Circulo_"
 
 
