@@ -1,10 +1,7 @@
 
 class Plano_cartesiano():
-    """ Esta classe possui formas (objetos) aninhados"""
-    """ Nela, o estudante deverá definir as operações de visualização
-    das formas, interação, inserção, remoção e atualização das mesmas
     
-    Resposta: que coincidencia professor, foi exatamente o que eu fiz hehe :D"""
+   """ Resposta: que coincidencia professor, foi exatamente o que eu fiz hehe :D"""
 
     contador = 0
 
